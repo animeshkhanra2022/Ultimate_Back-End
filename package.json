@@ -1,0 +1,15 @@
+{
+  "name": "ultimate_backend",
+  "version": "1.0.0",
+  "description": "A backend with javascript, mongodb, express, nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "chai"
+  },
+  "keywords": [
+    "animseh",
+    "chai"
+  ],
+  "author": "Animesh Khanra",
+  "license": "ISC"
+}
