@@ -2,14 +2,23 @@
   "name": "ultimate_backend",
   "version": "1.0.0",
   "description": "A backend with javascript, mongodb, express, nodejs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "chai"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "animseh",
     "chai"
   ],
   "author": "Animesh Khanra",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "mongoose": "^9.2.3"
+  }
 }
