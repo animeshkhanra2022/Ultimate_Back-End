@@ -242,8 +242,8 @@ const refreshAccessToken = asyncHandler( async (req, res) => {
 })
 
 const changeCurrentPassword = asyncHandler( async(req, res) => {
-    const { currentPassword, newPassword } = req.body;
 
+    const { currentPassword, newPassword } = req.body;
     if(
         [currentPassword, newPassword].some((field) => field?.trim() === "")
     ){
@@ -302,7 +302,7 @@ const updateAccountDetails = asyncHandler( async(req, res) => {
     )
 })
 
-// two middleware become here
+
 const updateUserAvatar = asyncHandler( async (req, res) => {
     const avatarLocalPath = req.file?.path;
     if(!avatarLocalPath){
@@ -329,7 +329,6 @@ const updateUserAvatar = asyncHandler( async (req, res) => {
     .json(new ApiResponce(201, user, "Avatar update successfully"))
 })
 
-// two middleware become here
 const updateUserCoverImage = asyncHandler( async(req, res) => {
     const coverImageLocalPath = req.file?.path;
     if(!coverImageLocalPath){
@@ -356,11 +355,13 @@ const updateUserCoverImage = asyncHandler( async(req, res) => {
     .json(new ApiResponce(201, user, "Cover image update successfully"))
 })
 
-const getUserChannetProfile = asyncHandler( async(req, res) => {
+const getUserChannelProfile = asyncHandler( async(req, res) => {
     const {username} = req.params;
     if(!username?.trim()) {
         throw new ApiError(400, "Username is missing");
     }
+
+    // console.log(username)
 
     const channel = await User.aggregate([
         {
@@ -415,10 +416,10 @@ const getUserChannetProfile = asyncHandler( async(req, res) => {
         }
     ])
 
-    if(!channel?.user){
+
+    if(!channel?.length){
         throw new ApiError(400, "Channel does not exists"); 
     }
-
 
     return res
     .status(201)
@@ -488,6 +489,6 @@ export { registerUser,
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
-    getUserChannetProfile,
+    getUserChannelProfile,
     getWatchHistory
 }
